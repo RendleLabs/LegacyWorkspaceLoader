@@ -31,4 +31,4 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release --no-build -p:PackageVersion=${{ steps.nbgv.outputs.SimpleVersion }} --output . src\RendleLabs.LegacyWorkspaceLoader\RendleLabs.LegacyWorkspaceLoader.csproj
     - name: Push
-      run: dotnet nuget push *.nupkg -k ${{ secrets.NUGET_API_KEY }} --skip-duplicate
+      run: dotnet nuget push *.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }} --skip-duplicate
