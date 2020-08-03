@@ -43,7 +43,7 @@ namespace RendleLabs.AdhocWorkspaceLoader
             var compileName = XName.Get("Compile", xmlns);
             var hintPathName = XName.Get("HintPath", xmlns);
             
-            var projectDirectory = Path.GetDirectoryName(filePath);
+            var projectDirectory = Path.GetDirectoryName(filePath)!;
             var projectName = Path.GetFileNameWithoutExtension(filePath);
             
             return new OldStyleProjectParser(xml, filePath, projectDirectory, projectName,
@@ -72,7 +72,7 @@ namespace RendleLabs.AdhocWorkspaceLoader
                 .Elements(_compileName)
                 .Select(e => e.Attribute("Include")?.Value)
                 .Where(s => !string.IsNullOrWhiteSpace(s))
-                .Select(s => Path.GetFullPath(s, _projectDirectory))
+                .Select(s => Path.GetFullPath(s!, _projectDirectory))
                 .Select(s => new DocumentSource(Path.GetFileName(s), s));
             return documents;
         }
@@ -84,7 +84,7 @@ namespace RendleLabs.AdhocWorkspaceLoader
                 .Elements(_projectReferenceName)
                 .Select(e => e.Attribute("Include")?.Value)
                 .Where(s => !string.IsNullOrWhiteSpace(s))
-                .Select(s => Path.GetFullPath(s, _projectDirectory));
+                .Select(s => Path.GetFullPath(s!, _projectDirectory));
             
             return projectReferences;
         }

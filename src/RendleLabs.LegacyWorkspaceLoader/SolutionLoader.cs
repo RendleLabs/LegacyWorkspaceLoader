@@ -16,7 +16,7 @@ namespace RendleLabs.AdhocWorkspaceLoader
         {
             _filePath = filePath;
             _fileSystem = fileSystem ?? new FileSystem();
-            _projectLineParser = new ProjectLineParser(Path.GetDirectoryName(filePath));
+            _projectLineParser = new ProjectLineParser(Path.GetDirectoryName(filePath)!);
         }
 
         public SolutionSource Parse(string text)
