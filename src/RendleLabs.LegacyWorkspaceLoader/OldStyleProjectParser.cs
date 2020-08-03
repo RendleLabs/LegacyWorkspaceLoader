@@ -121,9 +121,4 @@ namespace RendleLabs.AdhocWorkspaceLoader
             }
         }
     }
-
-    public class NewStyleProjectParser
-    {
-        private readonly XElement _xml;
-    }
 }

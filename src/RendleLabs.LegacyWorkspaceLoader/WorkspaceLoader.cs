@@ -9,16 +9,24 @@ using RendleLabs.AdhocWorkspaceLoader.Internals;
 
 namespace RendleLabs.AdhocWorkspaceLoader
 {
-    public class WorkspaceLoader
+    public class WorkspaceLoader : IWorkspaceLoader
     {
-        private const string DefaultFrameworkDirectory = @"C:\Windows\Microsoft.NET\Framework64\v4.0.30319";
         private readonly IFileSystem _fileSystem;
-        private readonly string _frameworkDirectory;
+        private string _frameworkDirectory = DefaultFrameworkDirectory();
         private readonly Dictionary<string, ProjectInfo> _projectInfos = new Dictionary<string, ProjectInfo>(StringComparer.OrdinalIgnoreCase);
-
-        public WorkspaceLoader(IFileSystem? fileSystem = null, string frameworkDirectory = DefaultFrameworkDirectory)
+        
+        public WorkspaceLoader()
         {
-            _fileSystem = fileSystem ?? new FileSystem();
+            _fileSystem = new FileSystem();
+        }
+
+        internal WorkspaceLoader(IFileSystem fileSystem)
+        {
+            _fileSystem = fileSystem ?? throw new ArgumentNullException(nameof(fileSystem));
+        }
+
+        public void SetFrameworkDirectory(string frameworkDirectory)
+        {
             _frameworkDirectory = frameworkDirectory;
         }
 
@@ -28,7 +36,7 @@ namespace RendleLabs.AdhocWorkspaceLoader
             return await BuildAsync(solution);
         }
 
-        public async Task<AdhocWorkspace> BuildAsync(SolutionSource solutionSource)
+        private async Task<AdhocWorkspace> BuildAsync(SolutionSource solutionSource)
         {
             var loader = new ProjectLoader(_fileSystem);
             
@@ -114,6 +122,12 @@ namespace RendleLabs.AdhocWorkspaceLoader
             if (!File.Exists(reference)) return null;
             
             return MetadataReference.CreateFromFile(reference, MetadataReferenceProperties.Assembly);
+        }
+
+        private static string DefaultFrameworkDirectory()
+        {
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows),
+                "Microsoft.NET", "Framework64", "v4.0.30319");
         }
     }
 }

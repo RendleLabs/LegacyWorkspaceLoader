@@ -6,11 +6,23 @@
         <Nullable>enable</Nullable>
         <RootNamespace>RendleLabs.AdhocWorkspaceLoader</RootNamespace>
     </PropertyGroup>
+    
+    <PropertyGroup>
+        <PackageId>RendleLabs.LegacyWorkspaceLoader</PackageId>
+        <Authors>RendleLabs</Authors>
+        <Description>Loads old-style .NET projects in .NET Core.</Description>
+        <Copyright>2020 RendleLabs Ltd.</Copyright>
+        <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <RepositoryUrl>https://github.com/RendleLabs/LegacyWorkspaceLoader</RepositoryUrl>
+    </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Build.Locator" Version="1.2.6" />
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.6.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="3.6.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.6" />
         <PackageReference Include="System.IO.Abstractions" Version="12.0.13" />
     </ItemGroup>
 
