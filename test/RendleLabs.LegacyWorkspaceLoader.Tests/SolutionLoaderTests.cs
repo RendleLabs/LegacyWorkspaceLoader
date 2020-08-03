@@ -13,7 +13,7 @@ namespace RendleLabs.AdhocWorkspaceLoader.Tests
         {
 	        var solution = new SolutionLoader(SolutionPath).Parse(MockHotel.Solution.Sln);
 	        
-	        Assert.Equal(3, solution.Projects.Count);
+	        Assert.Equal(4, solution.Projects.Count);
 
 	        var expects = new (string name, string path)[]
 	        {
