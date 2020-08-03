@@ -13,12 +13,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
       run: dotnet restore
+    - name: Nerdbank.GitVersioning
+      id: nbgv
+      uses: dotnet/nbgv@v0.3.1
     - name: Build
       run: dotnet build --configuration Release --no-restore 
     - name: Test
@@ -28,4 +33,4 @@ jobs:
       with:
         PROJECT_FILE_PATH: src\RendleLabs.LegacyWorkspaceLoader\RendleLabs.LegacyWorkspaceLoader.csproj
         NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
-        VERSION_STATIC: 1.0.0.${{ github.run_id }}
+        VERSION_STATIC: ${{ steps.nbgv.outputs.SimpleVersion }}
