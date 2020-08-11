@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Build.Locator;
+using RendleLabs.LegacyWorkspaceLoader;
 using Xunit;
 
 namespace RendleLabs.AdhocWorkspaceLoader.Tests

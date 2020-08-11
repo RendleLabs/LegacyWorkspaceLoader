@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
-namespace RendleLabs.AdhocWorkspaceLoader
+namespace RendleLabs.LegacyWorkspaceLoader
 {
     public class ProjectLineParser
     {

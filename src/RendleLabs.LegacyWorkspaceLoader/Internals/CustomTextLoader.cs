@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 
-namespace RendleLabs.AdhocWorkspaceLoader.Internals
+namespace RendleLabs.LegacyWorkspaceLoader.Internals
 {
     public class CustomTextLoader : TextLoader
     {

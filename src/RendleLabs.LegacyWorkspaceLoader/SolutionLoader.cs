@@ -4,7 +4,7 @@ using System.IO.Abstractions;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RendleLabs.AdhocWorkspaceLoader
+namespace RendleLabs.LegacyWorkspaceLoader
 {
     public class SolutionLoader
     {

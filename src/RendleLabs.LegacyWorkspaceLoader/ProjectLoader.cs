@@ -3,7 +3,7 @@ using System.IO.Abstractions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace RendleLabs.AdhocWorkspaceLoader
+namespace RendleLabs.LegacyWorkspaceLoader
 {
     public class ProjectLoader
     {

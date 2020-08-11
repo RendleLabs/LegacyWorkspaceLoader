@@ -4,7 +4,7 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
-        <RootNamespace>RendleLabs.AdhocWorkspaceLoader</RootNamespace>
+        <RootNamespace>RendleLabs.LegacyWorkspaceLoader</RootNamespace>
     </PropertyGroup>
     
     <PropertyGroup>

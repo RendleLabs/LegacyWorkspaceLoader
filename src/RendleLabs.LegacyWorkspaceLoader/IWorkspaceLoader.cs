@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
 
-namespace RendleLabs.AdhocWorkspaceLoader
+namespace RendleLabs.LegacyWorkspaceLoader
 {
     public interface IWorkspaceLoader
     {

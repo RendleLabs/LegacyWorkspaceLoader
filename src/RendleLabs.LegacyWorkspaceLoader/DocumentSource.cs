@@ -1,4 +1,4 @@
-﻿namespace RendleLabs.AdhocWorkspaceLoader
+﻿namespace RendleLabs.LegacyWorkspaceLoader
 {
     public class DocumentSource
     {

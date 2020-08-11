@@ -5,9 +5,9 @@ using System.IO.Abstractions;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.CodeAnalysis;
-using RendleLabs.AdhocWorkspaceLoader.Internals;
+using RendleLabs.LegacyWorkspaceLoader.Internals;
 
-namespace RendleLabs.AdhocWorkspaceLoader
+namespace RendleLabs.LegacyWorkspaceLoader
 {
     public class WorkspaceLoader : IWorkspaceLoader
     {
@@ -97,6 +97,9 @@ namespace RendleLabs.AdhocWorkspaceLoader
         {
             if (!_fileSystem.File.Exists(documentSource.Path)) return null;
 
+            return DocumentInfo.Create(DocumentId.CreateNewId(projectId), documentSource.Name,
+                filePath: documentSource.Path,
+                loader: new FileTextLoader(documentSource.Path, null));
             return DocumentInfo.Create(DocumentId.CreateNewId(projectId), documentSource.Name,
                 filePath: documentSource.Path,
                 loader: new CustomTextLoader(documentSource.Path, _fileSystem));

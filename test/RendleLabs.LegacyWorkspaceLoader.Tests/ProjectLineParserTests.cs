@@ -1,3 +1,4 @@
+using RendleLabs.LegacyWorkspaceLoader;
 using Xunit;
 
 namespace RendleLabs.AdhocWorkspaceLoader.Tests

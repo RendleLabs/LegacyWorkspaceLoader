@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using NSubstitute;
+using RendleLabs.LegacyWorkspaceLoader;
 using Xunit;
 
 namespace RendleLabs.AdhocWorkspaceLoader.Tests
