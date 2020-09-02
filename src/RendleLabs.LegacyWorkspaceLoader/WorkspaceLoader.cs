@@ -83,7 +83,7 @@ namespace RendleLabs.LegacyWorkspaceLoader
                 .WhereNotNull();
 
             var documents = projectSource.Documents
-                .Select(d => CreateDocumentInfo(projectId, d))
+                .SelectMany(d => CreateDocumentInfo(projectId, d))
                 .WhereNotNull();
 
             return ProjectInfo.Create(projectId, VersionStamp.Default, projectSource.Name, projectSource.Name, LanguageNames.CSharp,
@@ -93,16 +93,24 @@ namespace RendleLabs.LegacyWorkspaceLoader
                 documents: documents);
         }
 
-        private DocumentInfo? CreateDocumentInfo(ProjectId projectId, DocumentSource documentSource)
+        private IEnumerable<DocumentInfo> CreateDocumentInfo(ProjectId projectId, DocumentSource documentSource)
         {
-            if (!_fileSystem.File.Exists(documentSource.Path)) return null;
+            string? directoryPath = Path.GetDirectoryName(documentSource.Path);
 
-            return DocumentInfo.Create(DocumentId.CreateNewId(projectId), documentSource.Name,
-                filePath: documentSource.Path,
-                loader: new FileTextLoader(documentSource.Path, null));
-            return DocumentInfo.Create(DocumentId.CreateNewId(projectId), documentSource.Name,
-                filePath: documentSource.Path,
-                loader: new CustomTextLoader(documentSource.Path, _fileSystem));
+            if(!_fileSystem.Directory.Exists(directoryPath)) yield break;
+
+            var filePaths = _fileSystem.Directory.EnumerateFiles(directoryPath, documentSource.Name);
+
+            foreach (var filePath in filePaths)
+            {
+                if (!_fileSystem.File.Exists(filePath)) continue;
+
+                var fileName = Path.GetFileName(filePath);
+
+                yield return DocumentInfo.Create(DocumentId.CreateNewId(projectId), fileName,
+                    filePath: filePath,
+                    loader: new FileTextLoader(filePath, null));
+            }
         }
 
         private ProjectReference? TryGetProjectReference(string filePath)
