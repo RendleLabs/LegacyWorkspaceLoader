@@ -55,6 +55,10 @@ namespace RendleLabs.LegacyWorkspaceLoader
                     .Where(p => p.ProjectReferences.All(_projectInfos.ContainsKey))
                     .ToArray();
                 
+
+
+                if(!validProjects.Any()) break;
+                
                 foreach (var project in validProjects)
                 {
                     var info = CreateProjectInfo(project);
