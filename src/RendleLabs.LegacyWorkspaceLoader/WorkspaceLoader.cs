@@ -54,8 +54,6 @@ namespace RendleLabs.LegacyWorkspaceLoader
                 var validProjects = projects
                     .Where(p => p.ProjectReferences.All(_projectInfos.ContainsKey))
                     .ToArray();
-                
-
 
                 if(!validProjects.Any()) break;
                 
