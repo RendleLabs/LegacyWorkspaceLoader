@@ -1,21 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net5.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
         <RootNamespace>RendleLabs.LegacyWorkspaceLoader</RootNamespace>
     </PropertyGroup>
     
     <PropertyGroup>
-        <PackageId>RendleLabs.LegacyWorkspaceLoader</PackageId>
+        <PackageId>scott.munro.LegacyWorkspaceLoader</PackageId>
         <Authors>RendleLabs</Authors>
         <Description>Loads old-style .NET projects in .NET Core.</Description>
         <Copyright>2020 RendleLabs Ltd.</Copyright>
         <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <RepositoryUrl>https://github.com/RendleLabs/LegacyWorkspaceLoader</RepositoryUrl>
+        <RepositoryUrl>https://github.com/samunro/LegacyWorkspaceLoader</RepositoryUrl>
+        <Version>1.1.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
